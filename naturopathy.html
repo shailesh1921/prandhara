@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naturopathy & Consultation - Prandhara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <!-- <script type="module" crossorigin src="/assets/style-Cs0r5nnL.js"></script> -->
+    <!-- <script type="module" crossorigin src="/assets/main-CLf1-Ma_.js"></script> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-texture"></div>
+
+    <header class="page-header">
+        <div class="header-container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1 class="page-title">Prandhara</h1>
+        </div>
+    </header>
+
+    <main>
+        <!-- Consultation Section -->
+        <section id="consultation" class="content-section">
+            <div class="section-header">
+                <h2>Naturopathy & Consultation</h2>
+                <p class="section-subtitle">Connect with certified holistic health professionals.</p>
+            </div>
+
+            <div class="doctor-section">
+
+                <!-- Entry 1: Dr. Dhiresh Singh -->
+                <div class="doctor-entry-section">
+                    <!-- Profile Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image-wrapper">
+                            <img src="assets/dr_dhiresh.jpg" alt="Dr. Dhiresh Singh" class="doctor-image">
+                        </div>
+                        <div class="doctor-info">
+                            <h3 class="doctor-name">Dr. Dhiresh Singh</h3>
+                            <p class="doctor-qual">B.N.Y.S (Bachelor of Naturopathy and Yogic Sciences)</p>
+
+                            <div class="doctor-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">15+</span>
+                                    <span class="stat-label">Years Exp.</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">5k+</span>
+                                    <span class="stat-label">Ecstatic Patients</span>
+                                </div>
+                            </div>
+
+                            <div class="doctor-expertise">
+                                <h4>Expertise</h4>
+                                <p>Chronic Disease Reversal • Yoga Therapy • Lifestyle Management</p>
+                            </div>
+
+                            <div class="consult-actions">
+                                <button class="action-btn video" title="Video Call">📹</button>
+                                <button class="action-btn whatsapp" title="WhatsApp">💬</button>
+                                <button class="action-btn chat" title="Chat">🗨️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dedicated Form -->
+                    <div class="consult-form-wrapper">
+                        <h3 class="form-title">Book with Dr. Dhiresh</h3>
+                        <form class="consult-form">
+                            <div class="form-group">
+                                <label for="d-name">Patient Name</label>
+                                <input type="text" id="d-name" placeholder="Enter full name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="d-age">Age</label>
+                                    <input type="number" id="d-age" placeholder="Age" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="d-gender">Gender</label>
+                                    <select id="d-gender" required>
+                                        <option value="" disabled selected>Select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="d-history">Disease / Medical History</label>
+                                <textarea id="d-history" rows="3" placeholder="Briefly describe the issue..."
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="d-time">Preferred Consultation Time</label>
+                                <input type="datetime-local" id="d-time" required>
+                            </div>
+                            <button type="submit" class="submit-btn">Schedule Appointment</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Entry 2: Er. Shailesh Singh -->
+                <div class="doctor-entry-section">
+                    <!-- Profile Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image-wrapper">
+                            <img src="assets/er_shailesh.jpg" alt="Er. Shailesh Singh" class="doctor-image">
+                        </div>
+                        <div class="doctor-info">
+                            <h3 class="doctor-name">Er. Shailesh Singh</h3>
+                            <p class="doctor-qual">B.Tech in Information Technology</p>
+
+                            <div class="doctor-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">5+</span>
+                                    <span class="stat-label">Years Exp.</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">Top</span>
+                                    <span class="stat-label">Rated Trainer</span>
+                                </div>
+                            </div>
+
+                            <div class="doctor-expertise">
+                                <h4>Expertise</h4>
+                                <p>Coding • Fitness Workout • Diet Planning</p>
+                            </div>
+
+                            <div class="consult-actions">
+                                <button class="action-btn video" title="Video Call">📹</button>
+                                <button class="action-btn whatsapp" title="WhatsApp">💬</button>
+                                <button class="action-btn chat" title="Chat">🗨️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dedicated Form -->
+                    <div class="consult-form-wrapper">
+                        <h3 class="form-title">Book with Er. Shailesh</h3>
+                        <form class="consult-form">
+                            <div class="form-group">
+                                <label for="s-name">Patient Name</label>
+                                <input type="text" id="s-name" placeholder="Enter full name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="s-age">Age</label>
+                                    <input type="number" id="s-age" placeholder="Age" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="s-gender">Gender</label>
+                                    <select id="s-gender" required>
+                                        <option value="" disabled selected>Select</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="s-history">Describe Goals / Issues</label>
+                                <textarea id="s-history" rows="3" placeholder="Fitness goals or diet needs..."
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="s-time">Preferred Consultation Time</label>
+                                <input type="datetime-local" id="s-time" required>
+                            </div>
+                            <button type="submit" class="submit-btn" style="background-color: #4a6741;">Book
+                                Session</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; MADE by dhiresh &#129309;shailesh singh</p>
+    </footer>
+
+</body>
+
+</html>
