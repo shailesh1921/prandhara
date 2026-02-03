@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 // --- Middleware ---
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '.'))); // Serve static files
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // --- MongoDB Connection ---
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -29,7 +29,7 @@ app.use('/api', apiRoutes);
 
 // Default Route (Serve Frontend)
 app.get(/^(.*)$/, (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // --- Start Server ---
