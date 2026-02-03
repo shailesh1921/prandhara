@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Prandhara</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f4f9f4;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            color: #3a7d44;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f9f9f9;
+            color: #555;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f0f7f0;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-msg {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge-appt {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .refresh-btn {
+            background: #3a7d44;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .refresh-btn:hover {
+            background: #2f6536;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .loading {
+            text-align: center;
+            color: #888;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="refresh-btn" onclick="loadData()">Refresh Data</button>
+        <h1>Admin Dashboard</h1>
+
+        <div id="status"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Name / Patient</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Data injected here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function loadData() {
+            const tbody = document.getElementById('table-body');
+            const status = document.getElementById('status');
+
+            tbody.innerHTML = '';
+            status.innerHTML = '<div class="loading">Loading data from MongoDB...</div>';
+
+            try {
+                const response = await fetch('/api/messages');
+                const result = await response.json();
+
+                if (!result.success) throw new Error(result.error);
+
+                status.innerHTML = '';
+
+                if (result.data.length === 0) {
+                    status.innerHTML = '<div class="loading">No messages found.</div>';
+                    return;
+                }
+
+                result.data.forEach(item => {
+                    const isAppt = item.type === 'appointment' || item.doctor;
+                    const date = new Date(item.createdAt || item.timestamp).toLocaleString();
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><span class="badge ${isAppt ? 'badge-appt' : 'badge-msg'}">${isAppt ? 'Appointment' : 'Contact Msg'}</span></td>
+                        <td>${date}</td>
+                        <td>
+                            <strong>${isAppt ? item.patientName : item.name}</strong><br>
+                            <span style="font-size:0.9rem; color:#666;">${item.email || 'No Email'}</span>
+                        </td>
+                        <td>
+                            ${isAppt
+                            ? `<strong>Dr: ${item.doctor}</strong><br>Issue: ${item.history}`
+                            : item.message}
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (err) {
+                console.error(err);
+                status.innerHTML = `<div class="error">Error loading data: ${err.message}. Ensure server is running.</div>`;
+            }
+        }
+
+        // Load on start
+        loadData();
+    </script>
+</body>
+
+</html>

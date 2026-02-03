@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Feed - Prandhara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/extensive.css">
+    <link rel="stylesheet" href="css/vital-feed-page.css">
+</head>
+
+<body>
+    <div class="background-texture"></div>
+
+    <header class="main-header"
+        style="position: sticky; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);">
+        <a href="index.html" class="logo">Prandhara</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="vital-feed.html" class="active">Vital Feed</a>
+            <a href="dashboard.html" class="btn btn-primary" style="padding: 0.5rem 1rem;">Dashboard</a>
+        </nav>
+    </header>
+
+    <main class="feed-container">
+        <div class="feed-intro">
+            <h1>Vital Feed</h1>
+            <p>Daily inspiration for your natural wellness journey.</p>
+        </div>
+
+        <div id="feed-stream" class="feed-stream">
+            <!-- Posts injected here -->
+        </div>
+
+        <div id="loading-indicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <span>Loading more wisdom...</span>
+        </div>
+
+        <div id="end-message" class="end-message hidden">
+            <p>You have reached the beginning of time... or at least our feed.</p>
+        </div>
+    </main>
+
+    <script src="js/vital-feed-page.js"></script>
+</body>
+
+</html>

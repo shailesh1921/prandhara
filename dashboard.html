@@ -2,55 +2,263 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Social Dashboard - Prandhara</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard - Prandhara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
-  <script type="module" crossorigin src="/assets/dashboard-Cfz0LATG.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/style-Cs0r5nnL.js">
-  <link rel="modulepreload" crossorigin href="/assets/auth-Af6EiZxo.js">
-  <link rel="stylesheet" crossorigin href="/assets/style-CPA4b3XV.css">
+    <link rel="stylesheet" href="css/extensive.css">
+    <link rel="stylesheet" href="css/vital-feed.css">
+    <style>
+        body {
+            background: #f8fcf8;
+        }
+
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            padding: 2rem;
+            border-right: 1px solid #eee;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 2rem;
+        }
+
+        .profile-brief {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #eee;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 1rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #f0f7f0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .feed-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .feed-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feed-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            object-fit: cover;
+        }
+
+        .feed-img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1000;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .db-msg-card {
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .db-msg-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .db-msg-sender {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+    </style>
 </head>
 
 <body>
-    <div class="social-dashboard">
-        <!-- Left Sidebar -->
+
+    <!-- Mobile Toggle -->
+    <a href="index.html" class="mobile-nav-toggle" style="text-decoration: none;">🏠</a>
+
+    <div class="dashboard-layout">
         <aside class="sidebar">
-            <div class="profile-section">
-                <img id="sidebar-profile-img" src="" alt="Profile" class="profile-pic-large">
-                <h3 style="color: var(--color-primary); margin-bottom: 2rem;">Prandhara</h3>
+            <div class="profile-brief">
+                <!-- Placeholder image -->
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+                    class="profile-pic" alt="User">
+                <h3>Welcome, Member</h3>
+                <p style="font-size: 0.9rem; color: #888;">Wellness Seeker</p>
+                <div class="mt-1">
+                    <a href="index.html" style="font-size: 0.8rem; color: var(--primary-color);">&larr; Back to Home</a>
+                </div>
             </div>
 
-            <nav class="nav-menu">
-                <div class="nav-item active">Naturopathy</div>
-                <div class="nav-item">Yoga</div>
-                <div class="nav-item">Pranayam</div>
-                <div class="nav-item">Therapies</div>
+            <nav>
+                <div class="nav-item active">Your Feed</div>
+                <div class="nav-item">My Diet Plan</div>
+                <div class="nav-item">Yoga Routine</div>
+                <div class="nav-item">Consultations</div>
+                <div class="nav-item" style="color: #d32f2f; margin-top: 2rem;">Logout</div>
             </nav>
-
-            <div style="margin-top: auto;">
-                <button id="logout-btn" class="logout-btn">Logout</button>
-            </div>
         </aside>
 
-        <!-- Main Content (Feed) -->
-        <main class="feed-container">
-            <!-- Top Stories Bar -->
-            <section class="stories-bar">
-                <!-- Stories injected by JS -->
-            </section>
+        <main class="main-content">
+            <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2>Today's Wellness Feed</h2>
+                <button class="btn btn-primary">Log Daily Vitals</button>
+            </header>
 
-            <!-- Feed Posts -->
-            <section id="feed-container">
-                <!-- Posts injected by JS -->
-            </section>
+            <div class="feed-grid hidden" id="vital-messages-container" style="max-width: 600px; margin: 0 auto;">
+                <h3>Your Inquiries & Appointments</h3>
+                <div id="messages-list">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+
+            <div class="feed-grid" id="vital-feed-container" style="max-width: 600px; margin: 0 auto;">
+                <!-- Content will be injected by vital-feed.js -->
+            </div>
         </main>
     </div>
 
+    <!-- Scripts -->
+    <script src="js/db-handler.js"></script>
+    <script src="js/vital-feed.js" defer></script>
+    <script>
+        // Simple Dashboard Switcher Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const feedView = document.getElementById('vital-feed-container');
+            const msgView = document.getElementById('vital-messages-container');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Reset
+                    navItems.forEach(n => n.classList.remove('active'));
+                    item.classList.add('active');
+
+                    if (item.textContent.includes('Consultations') || item.textContent.includes('Messages')) {
+                        feedView.classList.add('hidden');
+                        msgView.classList.remove('hidden');
+                        renderMessages();
+                    } else {
+                        feedView.classList.remove('hidden');
+                        msgView.classList.add('hidden');
+                    }
+                });
+            });
+
+            async function renderMessages() {
+                const list = document.getElementById('messages-list');
+                list.innerHTML = '<p style="text-align:center; padding:1rem; color:#666;">Loading data from MongoDB...</p>';
+
+                try {
+                    // Fetch from API via DB handler
+                    const all = await DB.getAllMessages();
+
+                    if (!all || all.length === 0) {
+                        list.innerHTML = '<p style="text-align:center; color:#888;">No appointments or messages found in database.</p>';
+                        return;
+                    }
+
+                    list.innerHTML = all.map(item => {
+                        const isAppt = item.type === 'appointment' || item.doctor; // Check type or field
+                        return `
+                            <div class="db-msg-card">
+                                <div class="db-msg-header">
+                                    <span>${new Date(item.timestamp).toLocaleDateString()}</span>
+                                    <span style="background:${isAppt ? '#e8f5e9' : '#fff3e0'}; padding: 2px 8px; border-radius:10px; font-size:0.7rem;">${isAppt ? 'Appointment' : 'Message'}</span>
+                                </div>
+                                <div class="db-msg-sender">${isAppt ? 'For: ' + (item.doctor || 'Unknown') : 'From: Contact Form'}</div>
+                                <p style="margin: 0.5rem 0; font-size: 0.95rem;">${isAppt ? `Patient: ${item.patientName}<br>Issue: ${item.history}` : item.message}</p>
+                                ${isAppt ? `<div style="font-size:0.8rem; color:#4a6741; margin-top:0.5rem;">📅 Requested: ${new Date(item.time).toLocaleString()}</div>` : ''}
+                                <div style="font-size:0.75rem; color:#aaa; margin-top:0.5rem; text-align:right;">ID: ${item._id}</div>
+                            </div>
+                        `;
+                    }).join('');
+                } catch (e) {
+                    console.error(e);
+                    list.innerHTML = '<p style="text-align:center; color:red;">Failed to load data from server. Ensure Backend is running.</p>';
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
